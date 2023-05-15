@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>elbowH的博客</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    
+    <meta name="description" content="记录学习过程">
+    
+    <link rel="preload" href="/mynotes/assets/css/0.styles.1c00a5d2.css" as="style"><link rel="preload" href="/mynotes/assets/js/app.ff3e2c4c.js" as="script"><link rel="preload" href="/mynotes/assets/js/2.ecabc25e.js" as="script"><link rel="preload" href="/mynotes/assets/js/11.488bd455.js" as="script"><link rel="prefetch" href="/mynotes/assets/js/10.f937fc65.js"><link rel="prefetch" href="/mynotes/assets/js/12.8cb0935e.js"><link rel="prefetch" href="/mynotes/assets/js/13.b15b8047.js"><link rel="prefetch" href="/mynotes/assets/js/14.b4be6fd0.js"><link rel="prefetch" href="/mynotes/assets/js/3.132b138a.js"><link rel="prefetch" href="/mynotes/assets/js/4.20835d87.js"><link rel="prefetch" href="/mynotes/assets/js/5.954ec756.js"><link rel="prefetch" href="/mynotes/assets/js/6.dafc0921.js"><link rel="prefetch" href="/mynotes/assets/js/7.3fa0e32c.js"><link rel="prefetch" href="/mynotes/assets/js/8.85ac5431.js"><link rel="prefetch" href="/mynotes/assets/js/9.0dccee13.js">
+    <link rel="stylesheet" href="/mynotes/assets/css/0.styles.1c00a5d2.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/mynotes/" class="home-link router-link-active"><!----> <span class="site-name">elbowH的博客</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/mynotes/" class="nav-link">
+  主页
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/mynotes/" class="nav-link">
+  主页
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Java</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/mynotes/java/Java基础知识.html" class="sidebar-link">Java基础知识</a></li><li><a href="/mynotes/java/J2EE基础知识.html" class="sidebar-link">J2EE基础知识</a></li><li><a href="/mynotes/java/Java-Calendar.html" aria-current="page" class="active sidebar-link">Java-Calendar</a></li><li><a href="/mynotes/java/JDK7新特性概览.html" class="sidebar-link">JDK7新特性概览</a></li></ul></section></li><li><a href="/mynotes/mybatis/MyBatis总结.html" class="sidebar-link">Mybatis</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>微服务</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><p>Calendar.getInstance() 中所获得的实例就是一个 &quot;GreogrianCalendar&quot; 对象(与通过 new GregorianCalendar() 获得的结果一致)。</p> <p>#Calendar 与 Date 的转换
+Calendar calendar = Calendar.getInstance();
+// 从一个 Calendar 对象中获取 Date 对象
+Date date = calendar.getTime();
+// 将 Date 对象反应到一个 Calendar 对象中，
+// Calendar/GregorianCalendar 没有构造函数可以接受 Date 对象
+// 所以我们必需先获得一个实例，然后设置 Date 对象
+calendar.setTime(date);
+#注意的事项：
+##1. Calendar 的 set() 方法</p> <p>set(int field, int value) - 是用来设置&quot;年/月/日/小时/分钟/秒/微秒&quot;等值</p> <p>field 的定义在 Calendar 中</p> <p>set(int year, int month, int day, int hour, int minute, int second) 但没有</p> <p>set(int year, int month, int day, int hour, int minute, int second, int millisecond) 前面 set(int,int,int,int,int,int) 方法不会自动将 MilliSecond 清为 0。</p> <p>另外，月份的起始值为０而不是１，所以要设置八月时，我们用７而不是8。</p> <p>calendar.set(Calendar.MONTH, 7);</p> <p>我们通常需要在程序逻辑中将它清为 0， Calendar 不是马上就刷新其内部的记录</p> <p>在 Calendar 的方法中，get() 和 add() 会让 Calendar 立刻刷新。Set() 的这个特性会给我们的开发带来一些意想不到的结果。
+##add() 与 roll() 的区别</p> <p>add() 的功能非常强大，add 可以对 Calendar 的字段进行计算。如果需要减去值，那么使用负数值就可以了，如 add(field, -value)。</p> <p>add() 有两条规则：</p> <p>当被修改的字段超出它可以的范围时，那么比它大的字段会自动修正。如：
+Calendar cal1 = Calendar.getInstance();
+cal1.set(2000, 7, 31, 0, 0 , 0); //2000-8-31
+cal1.add(Calendar.MONTH, 1); //2000-9-31 =&gt; 2000-10-1，对吗？
+System.out.println(cal1.getTime()); //结果是 2000-9-30</p> <p>另一个规则是，如果比它小的字段是不可变的（由 Calendar 的实现类决定），那么该小字段会修正到变化最小的值。</p> <p>以上面的例子，9-31 就会变成 9-30，因为变化最小。</p> <p>Roll() 的规则只有一条：
+当被修改的字段超出它可以的范围时，那么比它大的字段不会被修正。如：</p> <p>Calendar cal1 = Calendar.getInstance();
+cal1.set(1999, 5, 6, 0, 0, 0); //1999-6-6, 周日
+cal1.roll(Calendar.WEEK_OF_MONTH, -1); //1999-6-1, 周二
+cal1.set(1999, 5, 6, 0, 0, 0); //1999-6-6, 周日
+cal1.add(Calendar.WEEK_OF_MONTH, -1); //1999-5-30, 周日
+WEEK_OF_MONTH 比 MONTH 字段小，所以 roll 不能修正 MONTH 字段。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/mynotes/java/J2EE基础知识.html" class="prev">
+        J2EE基础知识
+      </a></span> <span class="next"><a href="/mynotes/java/JDK7新特性概览.html">
+        JDK7新特性概览
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/mynotes/assets/js/app.ff3e2c4c.js" defer></script><script src="/mynotes/assets/js/2.ecabc25e.js" defer></script><script src="/mynotes/assets/js/11.488bd455.js" defer></script>
+  </body>
+</html>
